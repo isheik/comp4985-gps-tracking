@@ -56,11 +56,10 @@ let updateMarkers = () => {
           infoWindow.open(map, marker);
         });
         markers.push(marker);
+        clientsHTML += contentStr;
       }
-      clientsHTML += contentStr;
+      clntContainer.innerHTML = clientsHTML;
     }
-
-    clntContainer.innerHTML = clientsHTML;
   };
 
   oReq.open("GET", jsonPath, true);
