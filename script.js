@@ -3,15 +3,15 @@ let map;
 let markers = [];
 
 var initMap = () => {
-  let myLatLng = { lat: -25.363, lng: 131.044 };
+  let bcitLatLng = { lat: 49.249896, lng: -123.001553 };
 
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
-    center: myLatLng
+    center: bcitLatLng
   });
 
   let marker = new google.maps.Marker({
-    position: myLatLng,
+    position: bcitLatLng,
     map: map,
     title: "Hello World!"
   });
@@ -30,17 +30,8 @@ let updateMarkers = () => {
 
   oReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-      console.log(this.responseText);
-
       let locations = JSON.parse(this.responseText);
-      // let markerElems = {};
 
-      // if(mInst.length != 0) {
-      //   for(let mInst of mInstArray) {
-      //     mInst.marker
-
-      //   }
-      // }
       setMapOnAll(null);
 
       for (let location of locations) {
@@ -68,9 +59,6 @@ let updateMarkers = () => {
         marker.addListener("click", function() {
           infoWindow.open(map, marker);
         });
-        // markerElems.marker = marker;
-        // markerElems.infoWindow = infoWindow;
-        // mInstArray.push(markerElems);
         markers.push(marker);
       }
     }
