@@ -13,19 +13,30 @@ var initMap = () => {
     map: map,
     title: "Hello World!"
   });
+
+  updateMarkers();
 };
 
-let readJSON = () => {
+let updateMarkers = () => {
   let oReq = new XMLHttpRequest();
 
   oReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
       console.log(this.responseText);
+
+      let locations = JSON.parse(this.responseText);
+
+      for (let location of locations) {
+        let latLng = { lat: location.lat, lng: location.lng };
+        let marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: "Hello World!"
+        });
+      }
     }
   };
 
   oReq.open("GET", jsonPath, true);
   oReq.send();
 };
-
-readJSON();
