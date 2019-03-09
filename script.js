@@ -15,7 +15,7 @@ var initMap = () => {
     title: "Hello World!"
   });
 
-  updateMarkers();
+  setInterval(updateMarkers, 2000);
 };
 
 let updateMarkers = () => {
@@ -28,11 +28,29 @@ let updateMarkers = () => {
       let locations = JSON.parse(this.responseText);
 
       for (let location of locations) {
+        let contentStr = `
+          <div>
+            <h1>${location.name}</h1>
+            <p>
+              IP address: ${location.ip}<br>
+              Time: ${location.time}<br>
+              Latitude: ${location.lat}<br>
+              Longitude: ${location.lng}<br>
+            </p>
+          </div>
+        `;
+        let infoWindow = new google.maps.InfoWindow({
+          content: contentStr
+        });
+
         let latLng = { lat: location.lat, lng: location.lng };
         let marker = new google.maps.Marker({
           position: latLng,
           map: map,
           title: "Hello World!"
+        });
+        marker.addListener("click", function() {
+          infoWindow.open(map, marker);
         });
       }
     }
