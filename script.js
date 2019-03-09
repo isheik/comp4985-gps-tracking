@@ -1,6 +1,6 @@
 let jsonPath = "./location.json";
 let map;
-// let mInstArray = [];
+let markers = [];
 
 var initMap = () => {
   let myLatLng = { lat: -25.363, lng: 131.044 };
@@ -17,6 +17,12 @@ var initMap = () => {
   });
 
   setInterval(updateMarkers, 2000);
+};
+
+let setMapOnAll = map => {
+  for (let marker of markers) {
+    marker.setMap(map);
+  }
 };
 
 let updateMarkers = () => {
@@ -65,6 +71,7 @@ let updateMarkers = () => {
         // markerElems.marker = marker;
         // markerElems.infoWindow = infoWindow;
         // mInstArray.push(markerElems);
+        markers.push(marker);
       }
     }
   };
