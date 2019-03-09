@@ -33,7 +33,7 @@ let updateMarkers = () => {
       for (let location of locations) {
         let contentStr = `
           <div>
-            <h1>${location.name}</h1>
+            <h3>${location.name}</h3>
             <p>
               IP address: ${location.ip}<br>
               Time: ${location.time}<br>
