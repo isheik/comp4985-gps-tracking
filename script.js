@@ -1,6 +1,7 @@
 let jsonPath = "./location.json";
 let map;
 let markers = [];
+let clntContainer = document.getElementById("clients-container");
 
 var initMap = () => {
   let bcitLatLng = { lat: 49.249896, lng: -123.001553 };
@@ -25,6 +26,7 @@ let updateMarkers = () => {
   oReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
       let locations = JSON.parse(this.responseText);
+      let clientsHTML = "";
 
       setMapOnAll(null);
 
@@ -55,7 +57,10 @@ let updateMarkers = () => {
         });
         markers.push(marker);
       }
+      clientsHTML += contentStr;
     }
+
+    clntContainer.innerHTML = clientsHTML;
   };
 
   oReq.open("GET", jsonPath, true);
