@@ -6,7 +6,7 @@ var initMap = () => {
   let bcitLatLng = { lat: 49.249896, lng: -123.001553 };
 
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 20,
+    zoom: 13,
     center: bcitLatLng
   });
 
