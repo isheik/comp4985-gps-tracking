@@ -10,12 +10,6 @@ var initMap = () => {
     center: bcitLatLng
   });
 
-  let marker = new google.maps.Marker({
-    position: bcitLatLng,
-    map: map,
-    title: "Hello World!"
-  });
-
   setInterval(updateMarkers, 2000);
 };
 

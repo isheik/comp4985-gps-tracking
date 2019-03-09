@@ -2,15 +2,15 @@
   {
     "time": "Fri, 02 Feb 1996 03:04:05 GMT",
     "ip": "192.168.0.14",
-    "name": "milliways",
-    "lat": -25.363,
-    "lng": 20.044
+    "name": "dcom metrotown",
+    "lat": 49.225887,
+    "lng": -123.003843
   },
   {
     "time": "Sat, 09 Feb 2019 13:04:05 GMT",
     "ip": "192.168.0.25",
-    "name": "dcom",
-    "lat": 25.363,
-    "lng": 80.044
+    "name": "dcom NE1",
+    "lat": 49.253946,
+    "lng": -123.000967
   }
 ]
