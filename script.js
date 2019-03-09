@@ -32,7 +32,7 @@ let updateMarkers = () => {
       // if(mInst.length != 0) {
       //   for(let mInst of mInstArray) {
       //     mInst.marker
-          
+
       //   }
       // }
       setMapOnAll(null);
@@ -57,7 +57,7 @@ let updateMarkers = () => {
         let marker = new google.maps.Marker({
           position: latLng,
           map: map,
-          title: ${location.name}
+          title: location.name
         });
         marker.addListener("click", function() {
           infoWindow.open(map, marker);
