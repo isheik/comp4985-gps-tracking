@@ -4,14 +4,7 @@ let markers = [];
 let clntContainer = document.getElementById("clients-container");
 
 var initMap = () => {
-  let bcitLatLng = { lat: 49.249896, lng: -123.001553 };
-
-  map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 13,
-    center: bcitLatLng
-  });
-
-  setInterval(updateMarkers, 2000);
+  authUser();
 };
 
 let setMapOnAll = map => {
@@ -63,5 +56,33 @@ let updateMarkers = () => {
   };
 
   oReq.open("GET", jsonPath, true);
+  oReq.send();
+};
+
+let authUser = () => {
+  let authUrl = "./auth.json";
+  let oReq = new XMLHttpRequest();
+
+  oReq.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      let passwd = JSON.parse(this.responseText).passwd;
+      let input;
+
+      do {
+        input = prompt("Type in password for this page");
+      } while (input != passwd);
+
+      let bcitLatLng = { lat: 49.249896, lng: -123.001553 };
+
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 13,
+        center: bcitLatLng
+      });
+
+      setInterval(updateMarkers, 2000);
+    }
+  };
+
+  oReq.open("GET", authUrl);
   oReq.send();
 };
