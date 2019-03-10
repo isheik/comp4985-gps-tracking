@@ -69,7 +69,7 @@ let authUser = () => {
       let input;
 
       do {
-        input = prompt("Type in password for this page");
+        input = prompt("Input the password for this page");
       } while (input != passwd);
 
       let bcitLatLng = { lat: 49.249896, lng: -123.001553 };
