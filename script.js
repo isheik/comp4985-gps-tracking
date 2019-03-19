@@ -1,4 +1,6 @@
-let jsonPath = "./location.json";
+let jsonPath = "./data.JSON";
+let queryParams = "?" + new Date().getTime();
+let url = jsonPath + queryParams;
 let map;
 let markers = [];
 let clntContainer = document.getElementById("clients-container");
@@ -62,6 +64,6 @@ let updateMarkers = () => {
     }
   };
 
-  oReq.open("GET", jsonPath, true);
+  oReq.open("GET", url, true);
   oReq.send();
 };
